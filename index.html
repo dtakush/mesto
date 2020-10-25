@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Мои путешествия</title>
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <img src="images/logo.svg" class="header__logo" alt="Логотип Mesto">
+        </header>
+
+        <main class="content">
+            <section class="profile">
+                <div class="profile__person">
+                    <img src="images/Avatar.png" class="profile__avatar" alt="Аватар">
+                    <div class="profile__info">
+                        <div class="profile__edit-info">
+                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <button class="profile__edit-button"></button>
+                        </div>
+                        <p class="profile__about">Исследователь океана</p>
+                    </div>
+                </div>
+                <button class="profile__add-button"></button>
+            </section>
+    
+            <section class="cards">
+                <div class="card">
+                    <img class="card__image" src="images/barcelona.jpg" alt="Испания">
+                    <div class="card__info-block">
+                        <h2 class="card__title">Испания</h2>
+                        <div class="card__like"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__image" src="images/georgia.jpg" alt="Грузия">
+                    <div class="card__info-block">
+                        <h2 class="card__title">Грузия</h2>
+                        <div class="card__like"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__image" src="images/london.jpg" alt="Великобритания">
+                    <div class="card__info-block">
+                        <h2 class="card__title">Великобритания</h2>
+                        <div class="card__like"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__image" src="images/nha-trang.jpg" alt="Вьетнам">
+                    <div class="card__info-block">
+                        <h2 class="card__title">Вьетнам</h2>
+                        <div class="card__like"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__image" src="images/norway.jpg" alt="Норвегия">
+                    <div class="card__info-block">
+                        <h2 class="card__title">Норвегия</h2>
+                        <div class="card__like"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card__image" src="images/rome.jpg" alt="Италия">
+                    <div class="card__info-block">
+                        <h2 class="card__title">Италия</h2>
+                        <div class="card__like"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="popup">
+                <div class="popup__container">
+                    <img src="images/close-icon.svg" alt="" class="popup__close">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <form class="popup__form" name="new">
+                        <input type="text" placeholder="Ваше имя" class="popup__input popup__input_name">
+                        <input type="text" placeholder="О себе" class="popup__input popup__input_about">
+                        <button class="popup__save-button">Сохранить</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
