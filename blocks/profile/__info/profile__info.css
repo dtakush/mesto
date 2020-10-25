@@ -2,4 +2,11 @@
     max-width: 336px;
     display: flex;
     flex-direction: column;
+    transition: 1s ease-in-out;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__info {
+        max-width: 282px;
+    }
 }
