@@ -1,0 +1,8 @@
+.profile__name {
+    font-weight: 400;
+    font-size: 2.62rem;
+    line-height: 3.5rem;
+    text-align: left;  
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
