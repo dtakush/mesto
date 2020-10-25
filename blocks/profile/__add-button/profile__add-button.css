@@ -7,9 +7,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 22px;
-    transition: .1s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 .profile__add-button:hover {
-    background-color: rgb(255, 255, 255, .3);
+    opacity: .8;
 }

@@ -8,9 +8,9 @@
     background-repeat: no-repeat;
     background-size: 10px;
     margin: 0 0 0 17px;
-    transition: .1s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 .profile__edit-button:hover {
-    background-color: rgb(255, 255, 255, .3);
+    opacity: .8;
 }

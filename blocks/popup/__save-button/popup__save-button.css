@@ -6,4 +6,9 @@
     margin-top: 48px;
     color: #fff;
     background-color: #000;
+    transition: 1s ease-in-out;
+}
+
+.popup__save-button:hover {
+    opacity: .8;
 }

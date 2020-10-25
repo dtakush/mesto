@@ -5,5 +5,9 @@
     right: -40px;
     cursor: pointer;
     transform: rotate(45deg);
+    transition: 1s ease-in-out;
   }
   
+.popup__close:hover {
+  opacity: .8;
+}
