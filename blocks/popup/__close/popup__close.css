@@ -12,6 +12,7 @@
     right: -40px;
     cursor: pointer;
     transform: rotate(45deg);
+    cursor: pointer;
     transition: 1s ease-in-out;
   }
   
