@@ -1,3 +1,34 @@
+const initialCards = [
+    {
+        name: 'Испания',
+        link: 'images/barcelona.jpg'
+    },
+    {
+        name: 'Грузия',
+        link: 'images/georgia.jpg'
+    },
+    {
+        name: 'Великобритания',
+        link: 'images/london.jpg'
+    },
+    {
+        name: 'Вьетнам',
+        link: 'images/nha-trang.jpg'
+    },
+    {
+        name: 'Норвегия',
+        link: 'images/norway.jpg'
+    },
+    {
+        name: 'Италия',
+        link: 'images/rome.jpg'
+    }
+];
+
+
+const cardsContainer = document.querySelector('.cards');
+
+
 let editProfileButton = document.querySelector('.profile__edit-button');
 let profileName = document.querySelector('.profile__name');
 let profileAbout = document.querySelector('.profile__about');
@@ -40,3 +71,23 @@ function savePopupInfo(evt) {
 }
 
 popupForm.addEventListener('submit', savePopupInfo);
+
+
+function addCard (nameValue, linkValue) {
+    const cardTemplate = document.querySelector('#card-template').content;
+    const cardElement = cardTemplate.cloneNode(true);
+
+    cardElement.querySelector('.card__title').textContent = nameValue;
+    cardElement.querySelector('.card__image').src = linkValue;
+    cardElement.querySelector('.card__image').alt = nameValue;
+
+    cardsContainer.append(cardElement);
+}
+
+function cardValues (cardsArr) {
+    cardsArr.forEach(function(card) {
+        addCard(card.name, card.link);
+    })
+}
+
+cardValues(initialCards);
