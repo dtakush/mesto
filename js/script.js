@@ -28,51 +28,32 @@ const initialCards = [
 
 const cardsContainer = document.querySelector('.cards');
 
+const editPlaceButton = document.querySelector('.profile__add-button');
+const placePopup = document.querySelector('.popup__card');
+const placePopupCloseButton = placePopup.querySelector('.popup__close-place');
+const popupPlaceInput = document.querySelector('.popup__input_place');
+const popupLinkInput = document.querySelector('.popup__input_link');
+const placePopupSaveButton = document.querySelector('.popup__save-button_place');
 
-let editProfileButton = document.querySelector('.profile__edit-button');
-let profileName = document.querySelector('.profile__name');
-let profileAbout = document.querySelector('.profile__about');
+const popupButton = document.querySelector('.popup__save-button');
 
-let profilePopup = document.querySelector('.popup');
-let popupForm = profilePopup.querySelector('.popup__form');
-let popupNameInput = document.querySelector('.popup__input_name');
-let popupAboutInput = document.querySelector('.popup__input_about');
-let popupCloseButton = profilePopup.querySelector('.popup__close');
-let popupSaveButton = profilePopup.querySelector('.popup__save-button');
+const profilePopup = document.querySelector('.popup__profile');
+const popupForm = profilePopup.querySelector('.popup__form_profile');
+const popupNameInput = document.querySelector('.popup__input_name');
+const popupAboutInput = document.querySelector('.popup__input_about');
+const profilePopupCloseButton = profilePopup.querySelector('.popup__close-profile');
+const profilePopupSaveButton = profilePopup.querySelector('.popup__save-button-profile');
+const editProfileButton = document.querySelector('.profile__edit-button');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
 
+//Добавление информации в попап профиля
 popupNameInput.value = profileName.textContent;
 popupAboutInput.value = profileAbout.textContent;
 
 
 
-function openPopup() {
-    profilePopup.classList.add('popup_opened');
-}
-
-function closePopup() {
-    profilePopup.classList.remove('popup_opened');
-}
-
-editProfileButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
-
-
-
-function savePopupInfo(evt) {
-    evt.preventDefault();
-
-    let popupNameInput = document.querySelector('.popup__input_name');
-    let popupAboutInput = document.querySelector('.popup__input_about');
-
-    profileName.textContent = popupNameInput.value;
-    profileAbout.textContent = popupAboutInput.value;
-
-    closePopup();
-}
-
-popupForm.addEventListener('submit', savePopupInfo);
-
-
+//Добавиление картичек из массива
 function addCard (nameValue, linkValue) {
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.cloneNode(true);
@@ -91,3 +72,55 @@ function cardValues (cardsArr) {
 }
 
 cardValues(initialCards);
+
+
+
+
+//Открытие/закрытие попапа с профилем
+function toggleProfilePopup () {
+    profilePopup.classList.toggle('popup_opened');
+}
+
+editProfileButton.addEventListener('click', toggleProfilePopup);
+profilePopupCloseButton.addEventListener('click', toggleProfilePopup);
+
+
+
+
+//Сохраниение информации в профиле через попап
+function savePopupInfo(evt) {
+    evt.preventDefault();
+
+    let popupNameInput = document.querySelector('.popup__input_name');
+    let popupAboutInput = document.querySelector('.popup__input_about');
+
+    profileName.textContent = popupNameInput.value;
+    profileAbout.textContent = popupAboutInput.value;
+
+    toggleProfilePopup();
+}
+
+popupForm.addEventListener('submit', savePopupInfo);
+
+
+
+
+//Открытие/закрытие попапа карточек
+function togglePlacePopup () {
+    placePopup.classList.toggle('popup_opened');
+    placePopupSaveButton.disabled === true;
+}
+
+editPlaceButton.addEventListener('click', togglePlacePopup);
+placePopupCloseButton.addEventListener('click', togglePlacePopup);
+
+
+
+//Сохраниение новой карточки через попап
+function savePopupCard (evt) {
+    evt.preventDefault();
+
+
+
+    togglePlacePopup ();
+}
