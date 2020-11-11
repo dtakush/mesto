@@ -29,14 +29,14 @@ const initialCards = [
 const cardsContainer = document.querySelector('.cards');
 
 const editPlaceButton = document.querySelector('.profile__add-button');
-const placePopup = document.querySelector('.popup__card');
+const placePopup = document.querySelector('.popup_card');
 const placePopupCloseButton = placePopup.querySelector('.popup__close-place');
 const placePopupForm = placePopup.querySelector('.popup__form_place');
 const popupPlaceInput = document.querySelector('.popup__input_place');
 const popupLinkInput = document.querySelector('.popup__input_link');
 const placePopupSaveButton = document.querySelector('.popup__save-button_place');
 
-const profilePopup = document.querySelector('.popup__profile');
+const profilePopup = document.querySelector('.popup_profile');
 const profilePopupForm = profilePopup.querySelector('.popup__form_profile');
 const popupNameInput = document.querySelector('.popup__input_name');
 const popupAboutInput = document.querySelector('.popup__input_about');
