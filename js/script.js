@@ -56,7 +56,7 @@ popupAboutInput.value = profileAbout.textContent;
 
 
 
-//Добавиление картичек из массива
+//Добавиление картичек
 function addCard (nameValue, linkValue) {
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.cloneNode(true);
@@ -85,8 +85,10 @@ function addCard (nameValue, linkValue) {
         cardPreviewImage.src = linkValue;
         cardPreviewText.textContent = nameValue;   
     }
+
     const cardPreview = document.querySelector('.card-preview');
     const cardPreviewClose = cardPreview.querySelector('.card-preview__close');
+
     cardElement.querySelector('.card__image').addEventListener('click', toggleCardPreview);
     cardPreviewClose.addEventListener('click', () => cardPreview.classList.remove('card-preview_opened'));
 
@@ -105,15 +107,16 @@ cardValues(initialCards);
 
 
 
-
-//Открытие/закрытие попапа с профилем
-function toggleProfilePopup () {
-    profilePopup.classList.toggle('popup_opened');
+//Открытие/закрытие попапа
+function togglePopup (popup) {
+    popup.classList.toggle('popup_opened');
 }
 
-editProfileButton.addEventListener('click', toggleProfilePopup);
-profilePopupCloseButton.addEventListener('click', toggleProfilePopup);
+editProfileButton.addEventListener('click', () => togglePopup(profilePopup));
+profilePopupCloseButton.addEventListener('click', () => togglePopup(profilePopup));
 
+editPlaceButton.addEventListener('click', () => togglePopup(placePopup));
+placePopupCloseButton.addEventListener('click', () => togglePopup(placePopup));
 
 
 
@@ -127,22 +130,10 @@ function savePopupInfo(evt) {
     profileName.textContent = popupNameInput.value;
     profileAbout.textContent = popupAboutInput.value;
 
-    toggleProfilePopup();
+    togglePopup(profilePopup);
 }
 
 profilePopupForm.addEventListener('submit', savePopupInfo);
-
-
-
-
-//Открытие/закрытие попапа карточек
-function togglePlacePopup () {
-    placePopup.classList.toggle('popup_opened');
-    placePopupSaveButton.disabled === true;
-}
-
-editPlaceButton.addEventListener('click', togglePlacePopup);
-placePopupCloseButton.addEventListener('click', togglePlacePopup);
 
 
 
@@ -152,7 +143,7 @@ function savePopupCard (evt) {
 
     addCard(popupPlaceInput.value, popupLinkInput.value)
 
-    togglePlacePopup();
+    togglePopup(placePopup);
 }
 
 placePopupForm.addEventListener('submit', savePopupCard);

@@ -37,6 +37,7 @@
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 
+
 @import url(../blocks/card-preview/card-preview.css);
 @import url(../blocks/card-preview/__container/card-preview__container.css);
 @import url(../blocks/card-preview/__pic/card-preview__pic.css);
