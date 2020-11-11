@@ -31,14 +31,13 @@ const cardsContainer = document.querySelector('.cards');
 const editPlaceButton = document.querySelector('.profile__add-button');
 const placePopup = document.querySelector('.popup__card');
 const placePopupCloseButton = placePopup.querySelector('.popup__close-place');
+const placePopupForm = placePopup.querySelector('.popup__form_place');
 const popupPlaceInput = document.querySelector('.popup__input_place');
 const popupLinkInput = document.querySelector('.popup__input_link');
 const placePopupSaveButton = document.querySelector('.popup__save-button_place');
 
-const popupButton = document.querySelector('.popup__save-button');
-
 const profilePopup = document.querySelector('.popup__profile');
-const popupForm = profilePopup.querySelector('.popup__form_profile');
+const profilePopupForm = profilePopup.querySelector('.popup__form_profile');
 const popupNameInput = document.querySelector('.popup__input_name');
 const popupAboutInput = document.querySelector('.popup__input_about');
 const profilePopupCloseButton = profilePopup.querySelector('.popup__close-profile');
@@ -62,7 +61,16 @@ function addCard (nameValue, linkValue) {
     cardElement.querySelector('.card__image').src = linkValue;
     cardElement.querySelector('.card__image').alt = nameValue;
 
-    cardsContainer.append(cardElement);
+    //Лайк карточки
+    cardElement.querySelector('.card__like').addEventListener('click', (evt) => evt.target.classList.toggle('card__like_active'));
+
+    //Удаление карточки
+    /*function deleteCard () {
+        cardElement.remove();
+    }*/
+    cardElement.querySelector('.card__delete').addEventListener('click', () => cardElement.remove())
+
+    cardsContainer.prepend(cardElement);
 }
 
 function cardValues (cardsArr) {
@@ -100,7 +108,7 @@ function savePopupInfo(evt) {
     toggleProfilePopup();
 }
 
-popupForm.addEventListener('submit', savePopupInfo);
+profilePopupForm.addEventListener('submit', savePopupInfo);
 
 
 
@@ -120,7 +128,11 @@ placePopupCloseButton.addEventListener('click', togglePlacePopup);
 function savePopupCard (evt) {
     evt.preventDefault();
 
+    addCard(popupPlaceInput.value, popupLinkInput.value)
 
-
-    togglePlacePopup ();
+    togglePlacePopup();
 }
+
+placePopupForm.addEventListener('submit', savePopupCard);
+
+
