@@ -65,11 +65,13 @@ function addCard (nameValue, linkValue) {
     cardElement.querySelector('.card__like').addEventListener('click', (evt) => evt.target.classList.toggle('card__like_active'));
 
     //Удаление карточки
-    /*function deleteCard () {
-        cardElement.remove();
-    }*/
-    cardElement.querySelector('.card__delete').addEventListener('click', () => cardElement.remove())
+    function deleteCard (evt) {
+        const card = evt.target.closest('.card');
+        cardsContainer.removeChild(card);
+    }
+    cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
 
+    //Добавление карточки
     cardsContainer.prepend(cardElement);
 }
 
