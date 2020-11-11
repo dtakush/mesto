@@ -6,6 +6,7 @@
     margin-top: 48px;
     color: #fff;
     background-color: #000;
+    cursor: pointer;
     transition: 1s ease-in-out;
 }
 
@@ -16,5 +17,6 @@
 @media screen and (max-width: 767px) {
     .popup__save-button {
         min-width: 238px;
+        margin-top: 45px;
     }
 }
