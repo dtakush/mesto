@@ -26,7 +26,6 @@ const initialCards = [
 ];
 
 
-<<<<<<< HEAD
 const cardsContainer = document.querySelector('.cards');
 
 const editPlaceButton = document.querySelector('.profile__add-button');
@@ -96,15 +95,6 @@ function addCard (nameValue, linkValue) {
 
     //Добавление карточки
     cardsContainer.prepend(cardElement);
-=======
-
-
-function openPopup() {
-    popupNameInput.value = profileName.textContent;
-    popupAboutInput.value = profileAbout.textContent;
-
-    profilePopup.classList.add('popup_opened');
->>>>>>> ace410d24dd434d85e51f301d245005af443f41f
 }
 
 function cardValues (cardsArr) {
@@ -113,7 +103,6 @@ function cardValues (cardsArr) {
     })
 }
 
-<<<<<<< HEAD
 cardValues(initialCards);
 
 
@@ -132,8 +121,6 @@ placePopupCloseButton.addEventListener('click', () => togglePopup(placePopup));
 
 
 //Сохраниение информации в профиле через попап
-=======
->>>>>>> ace410d24dd434d85e51f301d245005af443f41f
 function savePopupInfo(evt) {
     evt.preventDefault();
 
@@ -156,12 +143,6 @@ function savePopupCard (evt) {
     togglePopup(placePopup);
 }
 
-<<<<<<< HEAD
 placePopupForm.addEventListener('submit', savePopupCard);
 
 
-=======
-editProfileButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
-popupForm.addEventListener('submit', savePopupInfo);
->>>>>>> ace410d24dd434d85e51f301d245005af443f41f
