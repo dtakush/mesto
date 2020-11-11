@@ -7,11 +7,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-<<<<<<< HEAD
     margin: 5px 0 30px;
-=======
-    cursor: pointer;
->>>>>>> ace410d24dd434d85e51f301d245005af443f41f
     transition: 1s ease-in-out;
 }
 

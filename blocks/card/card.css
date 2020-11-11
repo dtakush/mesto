@@ -5,10 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
     transition: 1s ease-in-out;
-=======
->>>>>>> ace410d24dd434d85e51f301d245005af443f41f
 }
 
 @media screen and (max-width: 767px) {
