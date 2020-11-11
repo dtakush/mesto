@@ -6,4 +6,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin: 5px 0 30px;
+    transition: 1s ease-in-out;
+}
+
+.card__like:hover {
+    opacity: .6;
 }

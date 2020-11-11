@@ -62,7 +62,7 @@ function addCard (nameValue, linkValue) {
     const cardElement = cardTemplate.cloneNode(true);
 
     cardElement.querySelector('.card__title').textContent = nameValue;
-    cardElement.querySelector('.card__image').src = linkValue;
+    cardElement.querySelector('.card__image').style.backgroundImage = 'url(' + linkValue + ')'
     cardElement.querySelector('.card__image').alt = nameValue;
 
     //Лайк карточки

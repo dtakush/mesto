@@ -9,4 +9,9 @@
     left: 108px;
     z-index: 3;
     cursor: pointer;
+    transition: 1s ease-in-out;
+}
+
+.card__delete:hover {
+    opacity: .6;
 }
