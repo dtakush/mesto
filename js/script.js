@@ -46,6 +46,10 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 
+
+
+
+
 //Добавление информации в попап профиля
 popupNameInput.value = profileName.textContent;
 popupAboutInput.value = profileAbout.textContent;
@@ -70,6 +74,22 @@ function addCard (nameValue, linkValue) {
         cardsContainer.removeChild(card);
     }
     cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
+
+    //Попап с картинкой
+    function toggleCardPreview () {
+        const cardPreview = document.querySelector('.card-preview');
+        const cardPreviewImage = cardPreview.querySelector('.card-preview__image');
+        const cardPreviewText = cardPreview.querySelector('.card-preview__text');
+
+        cardPreview.classList.toggle('card-preview_opened');
+        cardPreviewImage.src = linkValue;
+        cardPreviewText.textContent = nameValue;   
+    }
+    const cardPreview = document.querySelector('.card-preview');
+    const cardPreviewClose = cardPreview.querySelector('.card-preview__close');
+    cardElement.querySelector('.card__image').addEventListener('click', toggleCardPreview);
+    cardPreviewClose.addEventListener('click', () => cardPreview.classList.remove('card-preview_opened'));
+
 
     //Добавление карточки
     cardsContainer.prepend(cardElement);

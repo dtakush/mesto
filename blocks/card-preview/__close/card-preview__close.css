@@ -1,0 +1,20 @@
+.card-preview__close {
+    width: 40.7px;
+    position: relative;
+    right: -40px;
+    cursor: pointer;
+    transform: rotate(45deg);
+    transition: 1s ease-in-out;
+  }
+  
+.card-preview__close:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 767px) {
+  .card-preview__close {
+    width: 26px;
+    top: -60px;
+    right: 0px;
+  }
+}
