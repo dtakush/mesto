@@ -7,9 +7,7 @@ ____
 
 ### Какие технологии используются?
 
-HTML
-CSS
-JavaScript
+HTML – CSS – JavaScript
 
 ### GitHub Pages
 
