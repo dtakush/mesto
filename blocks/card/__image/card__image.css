@@ -8,4 +8,9 @@
     border-radius: 10px 10px 0 0;
     position: relative;
     top: -20px;
+    transition: 1s ease-in-out;
+}
+
+.card__image:hover {
+    opacity: .6;
 }

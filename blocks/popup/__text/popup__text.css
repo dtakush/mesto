@@ -1,4 +1,5 @@
-.card-preview__text {
+.popup__text {
+    width: 100%;
     font-size: .75rem;
     font-weight: 500;
     color: #fff;

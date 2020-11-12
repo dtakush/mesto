@@ -77,20 +77,22 @@ function addCard (nameValue, linkValue) {
 
     //Попап с картинкой
     function toggleCardPreview () {
-        const cardPreview = document.querySelector('.card-preview');
-        const cardPreviewImage = cardPreview.querySelector('.card-preview__image');
-        const cardPreviewText = cardPreview.querySelector('.card-preview__text');
+        const cardPreview = document.querySelector('.popup_card');
+        const cardPreviewImage = cardPreview.querySelector('.popup__image');
+        const cardPreviewText = cardPreview.querySelector('.popup__text');
 
-        cardPreview.classList.toggle('card-preview_opened');
+        cardPreviewText.style.width = cardPreviewImage.style.width;
+
+        cardPreview.classList.toggle('popup_opened');
         cardPreviewImage.src = linkValue;
         cardPreviewText.textContent = nameValue;   
     }
 
-    const cardPreview = document.querySelector('.card-preview');
-    const cardPreviewClose = cardPreview.querySelector('.card-preview__close');
+    const cardPreview = document.querySelector('.popup');
+    const cardPreviewClose = cardPreview.querySelector('.popup__close_card');
 
     cardElement.querySelector('.card__image').addEventListener('click', toggleCardPreview);
-    cardPreviewClose.addEventListener('click', () => cardPreview.classList.remove('card-preview_opened'));
+    cardPreviewClose.addEventListener('click', () => cardPreview.classList.remove('popup_opened'));
 
 
     //Добавление карточки

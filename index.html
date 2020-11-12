@@ -30,19 +30,19 @@
             <section class="cards">
             </section>
 
-            <section class="card-preview">
-                <div class="card-preview__container">
-                    <div class="card-preview__pic">
-                        <img src="images/close-icon.svg" alt="Крестик закрытия" class="card-preview__close">
-                        <img class="card-preview__image" src="#" alt="">
+            <section class="popup popup_card">
+                <div class="popup__container popup__container_card">
+                    <div class="popup__pic">
+                        <button class="popup__close popup__close_card" type="button"></button>
+                        <img class="popup__image" src="#" alt="">
+                        <p class="popup__text"></p>
                     </div>
-                    <p class="card-preview__text"></p>
                 </div>
             </section>
 
             <section class="popup popup_profile">
                 <div class="popup__container">
-                    <img src="images/close-icon.svg" alt="Крестик закрытия" class="popup__close popup__close-profile">
+                    <button class="popup__close popup__close-profile" type="button"></button>
                     <h2 class="popup__title">Редактировать профиль</h2>
                     <form class="popup__form popup__form_profile" name="new">
                         <input type="text" placeholder="Ваше имя" class="popup__input popup__input_name">
@@ -53,7 +53,7 @@
             </section>
             <section class="popup popup_card">
                 <div class="popup__container">
-                    <img src="images/close-icon.svg" alt="Крестик закрытия" class="popup__close popup__close-place">
+                    <button class="popup__close popup__close-place" type="button"></button>
                     <h2 class="popup__title">Новое место</h2>
                     <form class="popup__form popup__form_place" name="new">
                         <input type="text" placeholder="Название" class="popup__input popup__input_place">
@@ -64,18 +64,6 @@
             </section>
 
         </main>
-
-        <section class="popup">
-            <div class="popup__container">
-                <button class="popup__close" type="button"></button>
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" name="new">
-                    <input type="text" placeholder="Ваше имя" class="popup__input popup__input_name">
-                    <input type="text" placeholder="О себе" class="popup__input popup__input_about">
-                    <button class="popup__save-button" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </section>
         
         <footer class="footer">
             <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
