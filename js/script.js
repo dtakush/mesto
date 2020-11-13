@@ -72,7 +72,6 @@ function generateCard (nameValue, linkValue) {
     //Удаление карточки
     function deleteCard (evt) {
         const card = evt.target.closest('.card');
-        //А такой вариант лучше, чем cardsContainer.removeChild(card);?
         card.remove();
     }
     cardElement.querySelector('.card__delete').addEventListener('click', deleteCard);
