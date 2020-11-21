@@ -6,12 +6,17 @@
     line-height: 17px;
     box-sizing: border-box;
     padding: 0 0 10px;
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
   
-  .popup__input:last-of-type {
-    margin-bottom: 0;
+  .popup__input:first-of-type {
+    margin-top: 0;
   }
+
+  .popup__input:invalid:not(:focus):not(:placeholder-shown) {
+    border-bottom: 1px solid #f00;
+    margin-top: 13px;
+}
 
   @media screen and (max-width: 767px) {
     .popup__input {

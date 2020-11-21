@@ -47,7 +47,6 @@ const profileAbout = document.querySelector('.profile__about');
 
 
 
-
 //Добавление информации в попап профиля
 popupNameInput.value = profileName.textContent;
 popupAboutInput.value = profileAbout.textContent;
@@ -111,11 +110,18 @@ renderInitialCards(initialCards);
 //Открытие попапа
 function openPopup (popup) {
     popup.classList.add('popup_opened');
+    popup.addEventListener('mousedown', (evt) => closePopup(evt.target));
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') {
+            closePopup(popup);
+        }});
 }
 
 //Закрытие попапа
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
+
+    placePopupForm.reset();
 }
 
 editProfileButton.addEventListener('click', () => openPopup(profilePopup));
@@ -123,7 +129,6 @@ profilePopupCloseButton.addEventListener('click', () => closePopup(profilePopup)
 
 editPlaceButton.addEventListener('click', () => openPopup(placePopup));
 placePopupCloseButton.addEventListener('click', () => closePopup(placePopup));
-
 
 
 //Сохраниение информации в профиле через попап

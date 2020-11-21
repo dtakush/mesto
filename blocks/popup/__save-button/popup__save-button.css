@@ -14,6 +14,13 @@
     opacity: .8;
 }
 
+.popup__save-button:invalid {
+    opacity: .2;
+    color: #000;
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
 @media screen and (max-width: 767px) {
     .popup__save-button {
         min-width: 238px;
