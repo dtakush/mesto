@@ -44,7 +44,7 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 
-
+const imagePopup = document.querySelector('.popup_card');
 
 
 //Добавление информации в попап профиля
@@ -110,18 +110,34 @@ renderInitialCards(initialCards);
 //Открытие попапа
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    popup.addEventListener('mousedown', (evt) => closePopup(evt.target));
+    popupClickHandler(popup);
+
+    const form = popup.querySelector('.popup__form');    
+    resetValidation(form, validationObj);
+}
+
+
+//Закрытие попапа по клику на оверлей или нажатию на клавишу Esc
+function popupClickHandler (popup) {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target == evt.currentTarget) {
+            closePopup(evt.target);
+        } else {
+            closePopup(imagePopup);
+        }
+    });
+
     document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            closePopup(popup);
-        }});
+    if (evt.key === 'Escape') {
+        closePopup(popup);
+    }});
+
 }
 
 //Закрытие попапа
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
 
-    placePopupForm.reset();
 }
 
 editProfileButton.addEventListener('click', () => openPopup(profilePopup));

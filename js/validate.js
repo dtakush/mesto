@@ -1,79 +1,90 @@
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    inputInvalidClass: '.popup__input_invalid',
-    submitButtonSelector: '.popup__save-button',
-    submitButtonInvalidClass: '.popup__save-button_invalid'
-}
-
-
 //Показать сообщение об ошибке
-const showInputError = (form, input) => {
+const showInputError = (form, input, obj) => {
     const error = form.querySelector(`#${input.id}-error`);
-    input.classList.add(`popup__input_invalid`);
+    input.classList.add(`${obj.inputInvalidClass}`);
     error.textContent = input.validationMessage;
 };
 
 
 //Скрыть сообщение об ошибке
-const hideInputError = (form, input) => {
+const hideInputError = (form, input, obj) => {
     const error = form.querySelector(`#${input.id}-error`);
-    input.classList.remove(`popup__input_invalid`);
+    input.classList.remove(`${obj.inputInvalidClass}`);
     error.textContent = '';
 };
 
 //Проверка валидации полей ввода
-const checkInputValidity = (form, input) => {
+const checkInputValidity = (form, input, obj) => {
     if (!input.validity.valid) {
-        showInputError(form, input);
+        showInputError(form, input, obj);
     } else {
-        hideInputError(form, input);
+        hideInputError(form, input, obj);
     }
 };
 
 //Активация/дезактивация кнопки
-function setButtonState (button, isActive) {
+function setButtonState (button, isActive, obj) {
     if(isActive) {
-        button.classList.remove('popup__save-button_invalid');
+        button.classList.remove(`${obj.submitButtonInvalidClass}`);
         button.disabled === false;
     } else {
-        button.classList.add('popup__save-button_invalid');
+        button.classList.add(`${obj.submitButtonInvalidClass}`);
         button.disabled === true;
     }
 }
 
 //Добавление обработчиков события на поля ввода
-function setEventListeners(form) {
-    const inputArr = form.querySelectorAll('.popup__input');
-    const buttonElement = form.querySelector('.popup__save-button');
+function setEventListeners(form, obj) {
+    const inputArr = form.querySelectorAll(`.${obj.inputSelector}`);
+    const buttonElement = form.querySelector(`.${obj.submitButtonSelector}`);
 
     inputArr.forEach((input) => {
         input.addEventListener('input', () => {
-            checkInputValidity(form, input);
-            setButtonState(buttonElement, form.checkValidity());
+            checkInputValidity(form, input, obj);
+            setButtonState(buttonElement, form.checkValidity(), obj);
         })
     });
-    }
+}
 
-function resetValidation (form) {
-    
-}    
+
+//Сброс настроек валидации при открытии окна
+function resetValidation (form, obj) {
+    const errorArr = form.querySelectorAll(obj.errorSelector);    
+    errorArr.forEach((error) => {
+        error.textContent = '';
+    });
+
+    const inputArr = form.querySelectorAll(obj.inputSelector);
+    inputArr.forEach((input) => {
+        input.classList.remove(obj.inputInvalidClass);
+    });
+}
 
 
 //Выборка форм на странице
-function enableValidation() {
-    const forms = document.querySelectorAll('.popup__form');
+function enableValidation(obj) {
+    const forms = document.querySelectorAll(`.${obj.formSelector}`);
     forms.forEach((form) => {
-         setEventListeners(form);
+        setEventListeners(form, obj);
 
         form.addEventListener('submit', (evt) => {
             evt.preventDefault();
         })
 
-        const buttonElement = form.querySelector('.popup__save-button');
-        setButtonState(buttonElement, form.checkValidity());
+        const buttonElement = form.querySelector(`.${obj.submitButtonSelector}`);
+        setButtonState(buttonElement, form.checkValidity(), obj);
     })
+}
         
-    }
+const validationObj = {
+    formSelector: 'popup__form',
+    inputSelector: 'popup__input',
+    errorSelector: 'popup__error',
+    inputInvalidClass: 'popup__input_invalid',
+    submitButtonSelector: 'popup__save-button',
+    submitButtonInvalidClass: 'popup__save-button_invalid',
+    
+};
 
-enableValidation();
+
+enableValidation(validationObj);
