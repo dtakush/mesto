@@ -110,8 +110,8 @@ renderInitialCards(initialCards);
 //Открытие попапа
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    popup.addEventListener('mousedown', (evt) => popupClickOverlayHandler(evt));
-    document.addEventListener('keydown', (evt) => popupEscHandler(popup, evt));
+    popup.addEventListener('mousedown', (evt) => clickOverlayPopupHandler(evt));
+    document.addEventListener('keydown', (evt) => clickEscPopupHandler(popup, evt));
 
     const form = popup.querySelector('.popup__form');
 
@@ -120,7 +120,7 @@ function openPopup (popup) {
 
 
 //Закрытие попапа по клику на оверлей
-function popupClickOverlayHandler (evt) {
+function clickOverlayPopupHandler (evt) {
     if (evt.target == evt.currentTarget) {
         closePopup(evt.target);
     } else {
@@ -129,7 +129,7 @@ function popupClickOverlayHandler (evt) {
 }
 
 //Закрытие попапа по нажатию на клавишу Esc
-function popupEscHandler (popup, evt) {
+function clickEscPopupHandler (popup, evt) {
     if (evt.key === 'Escape') {
         closePopup(popup);
     };
@@ -140,7 +140,8 @@ function popupEscHandler (popup, evt) {
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
 
-    popup.removeEventListener('mousedown', (evt) => popupClickOverlayHandler(evt));
+    popup.removeEventListener('mousedown', (evt) => clickOverlayPopupHandler(evt));
+    document.removeEventListener('keydown', (evt) => clickEscPopupHandler(popup, evt));
 }
 
 editProfileButton.addEventListener('click', () => openPopup(profilePopup));
