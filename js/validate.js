@@ -48,7 +48,7 @@ function setEventListeners(form, obj) {
 
 
 //Сброс настроек валидации при открытии окна
-function resetValidation (form, obj) {
+/*function resetValidation (form, obj) {
     const errorArr = form.querySelectorAll(obj.errorSelector);    
     errorArr.forEach((error) => {
         error.textContent = '';
@@ -58,7 +58,7 @@ function resetValidation (form, obj) {
     inputArr.forEach((input) => {
         input.classList.remove(obj.inputInvalidClass);
     });
-}
+}*/
 
 
 //Выборка форм на странице
@@ -83,7 +83,6 @@ const validationObj = {
     inputInvalidClass: 'popup__input_invalid',
     submitButtonSelector: 'popup__save-button',
     submitButtonInvalidClass: 'popup__save-button_invalid',
-    
 };
 
 

@@ -110,34 +110,37 @@ renderInitialCards(initialCards);
 //Открытие попапа
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    popupClickHandler(popup);
+    popup.addEventListener('mousedown', (evt) => popupClickOverlayHandler(evt));
+    document.addEventListener('keydown', (evt) => popupEscHandler(popup, evt));
 
-    const form = popup.querySelector('.popup__form');    
-    resetValidation(form, validationObj);
+    const form = popup.querySelector('.popup__form');
+
+    //resetValidation(form, validationObj);
 }
 
 
-//Закрытие попапа по клику на оверлей или нажатию на клавишу Esc
-function popupClickHandler (popup) {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target == evt.currentTarget) {
-            closePopup(evt.target);
-        } else {
-            closePopup(imagePopup);
-        }
-    });
+//Закрытие попапа по клику на оверлей
+function popupClickOverlayHandler (evt) {
+    if (evt.target == evt.currentTarget) {
+        closePopup(evt.target);
+    } else {
+        closePopup(imagePopup);
+    }
+}
 
-    document.addEventListener('keydown', (evt) => {
+//Закрытие попапа по нажатию на клавишу Esc
+function popupEscHandler (popup, evt) {
     if (evt.key === 'Escape') {
         closePopup(popup);
-    }});
-
+    };
 }
+    
 
 //Закрытие попапа
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
 
+    popup.removeEventListener('mousedown', (evt) => popupClickOverlayHandler(evt));
 }
 
 editProfileButton.addEventListener('click', () => openPopup(profilePopup));
