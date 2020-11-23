@@ -14,8 +14,3 @@ HTML – CSS – JavaScript
 
 * [Ссылка на макет на GitHub Pages](https://dtakush.github.io/mesto/index.html)
 
-____
-
-### Что еще планируется добавить?
-
-Убрать сообщения об ошибках при повторном открытии формы попапа

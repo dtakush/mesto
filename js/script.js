@@ -96,13 +96,16 @@ function openPopup (popup) {
         popupLinkInput.value = '';
         submitButton.disabled = true;
     }
+
+    resetValidation(popup);
 }
 
-//Открытие попапа добавления карточек
-function openPlacePopup () {
-    openPopup(popup);
+//Сброс видимости ошибок при открытии окна
+function resetValidation (popup) {
+    const formElement = popup.querySelector('.popup__form');
+    const inputsArr = formElement.querySelectorAll('.popup__input');
+    inputsArr.forEach((inputElement) => hideInputError(formElement, inputElement, validationObj));
 }
-
 
 //Закрытие попапа по клику на оверлей
 function clickOverlayPopupHandler (evt) {

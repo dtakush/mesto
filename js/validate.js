@@ -47,20 +47,6 @@ function setEventListeners(form, obj) {
 }
 
 
-//Сброс настроек валидации при открытии окна
-/*function resetValidation (form, obj) {
-    const errorArr = form.querySelectorAll(obj.errorSelector);    
-    errorArr.forEach((error) => {
-        error.textContent = '';
-    });
-
-    const inputArr = form.querySelectorAll(obj.inputSelector);
-    inputArr.forEach((input) => {
-        input.classList.remove(obj.inputInvalidClass);
-    });
-}*/
-
-
 //Выборка форм на странице
 function enableValidation(obj) {
     const forms = document.querySelectorAll(`.${obj.formSelector}`);
@@ -76,6 +62,7 @@ function enableValidation(obj) {
     })
 }
         
+
 const validationObj = {
     formSelector: 'popup__form',
     inputSelector: 'popup__input',
