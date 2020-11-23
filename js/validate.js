@@ -26,10 +26,10 @@ const checkInputValidity = (form, input, obj) => {
 function setButtonState (button, isActive, obj) {
     if(isActive) {
         button.classList.remove(`${obj.submitButtonInvalidClass}`);
-        button.disabled === false;
+        button.disabled = false;
     } else {
         button.classList.add(`${obj.submitButtonInvalidClass}`);
-        button.disabled === true;
+        button.disabled = true;
     }
 }
 
