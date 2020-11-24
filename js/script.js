@@ -89,15 +89,6 @@ function openPopup (popup) {
     popup.classList.add('popup_opened');
     popup.addEventListener('mousedown', clickOverlayPopupHandler);
     document.addEventListener('keydown', clickEscPopupHandler);
-
-    if (popup === placePopup) {
-        const submitButton = popup.querySelector('.popup__save-button');
-        popupPlaceInput.value = '';
-        popupLinkInput.value = '';
-        submitButton.disabled = true;
-    }
-
-    resetValidation(popup);
 }
 
 //Сброс видимости ошибок при открытии окна
@@ -109,16 +100,16 @@ function resetValidation (popup) {
 
 //Закрытие попапа по клику на оверлей
 function clickOverlayPopupHandler (evt) {
-    const openedPopup = document.querySelector('.popup_opened');
     if (evt.target == evt.currentTarget) {
+        const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
 }
 
 //Закрытие попапа по нажатию на клавишу Esc
 function clickEscPopupHandler (evt) {
-    const openedPopup = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     };
 }
@@ -132,10 +123,20 @@ function closePopup (popup) {
     document.removeEventListener('keydown', clickEscPopupHandler);
 }
 
-editProfileButton.addEventListener('click', () => openPopup(profilePopup));
+editProfileButton.addEventListener('click', () => {
+    resetValidation(profilePopup);
+    openPopup(profilePopup);
+});
 profilePopupCloseButton.addEventListener('click', () => closePopup(profilePopup));
 
-editPlaceButton.addEventListener('click', () => openPopup(placePopup));
+
+editPlaceButton.addEventListener('click', () => {
+    popupPlaceInput.value = '';
+    popupLinkInput.value = '';
+    popupPlaceSubmitButton.disabled = true;
+    resetValidation(placePopup);
+    openPopup(placePopup);
+});
 placePopupCloseButton.addEventListener('click', () => closePopup(placePopup));
 
 
