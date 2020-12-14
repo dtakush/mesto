@@ -8,7 +8,7 @@ export class FormValidator {
     _showInputError(form, input) {
         const error = form.querySelector(`#${input.id}-error`);
         input.classList.remove(this._obj.inputInvalidClass);
-        error.textContent = '';
+        error.textContent = input.validationMessage;
     }
     
     //Скрыть сообщение об ошибке
@@ -59,7 +59,16 @@ export class FormValidator {
 
         this._setEventListeners(this._form);
 
-        //const buttonElement = this._form.querySelector(this._obj.submitButtonSelector);
-        //this._setButtonState(buttonElement, this._form.checkValidity());
+        const buttonElement = this._form.querySelector(this._obj.submitButtonSelector);
+        this._setButtonState(buttonElement, this._form.checkValidity());
+    }
+
+    //Сброс видимости ошибок при открытии окна
+    resetValidation () {
+        const inputsArr = this._form.querySelectorAll(this._obj.inputSelector);
+
+        inputsArr.forEach((input) => {
+            this._hideInputError(this._form, input);
+        });
     }
 }

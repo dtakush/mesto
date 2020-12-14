@@ -2,7 +2,7 @@
     max-width: 336px;
     display: flex;
     flex-direction: column;
-    transition: 1s ease-in-out;
+    transition: .5s linear;
 }
 
 @media screen and (max-width: 767px) {

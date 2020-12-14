@@ -26,10 +26,11 @@ const profileAbout = document.querySelector('.profile__about');
 
 
 const validationObj = {
-    inputSelector: 'popup__input',
-    inputInvalidClass: 'popup__input_invalid',
-    submitButtonSelector: 'popup__save-button',
-    submitButtonInvalidClass: 'popup__save-button_invalid',
+    inputSelector: '.popup__input',
+    errorSelector: '.popup__error',
+    inputInvalidClass: '.popup__input_invalid',
+    submitButtonSelector: '.popup__save-button',
+    submitButtonInvalidClass: '.popup__save-button_invalid',
 };
 
 const profileFormValidation = new FormValidator(validationObj, profilePopupForm);
@@ -57,14 +58,11 @@ export function openPopup (popup) {
     popup.classList.add('popup_opened');
     popup.addEventListener('mousedown', clickOverlayPopupHandler);
     document.addEventListener('keydown', clickEscPopupHandler);
+
+    profileFormValidation.resetValidation();
+    placeFormValidation.resetValidation();
 }
 
-//Сброс видимости ошибок при открытии окна
-/*function resetValidation (popup) {
-    const formElement = popup.querySelector('.popup__form');
-    const inputsArr = formElement.querySelectorAll('.popup__input');
-    inputsArr.forEach((inputElement) => hideInputError(formElement, inputElement, validationObj));
-}*/
 
 //Закрытие попапа по клику на оверлей
 function clickOverlayPopupHandler (evt) {
