@@ -1,4 +1,4 @@
-class Card {
+export class Card {
     constructor (link, title) {
         this._link = link;
         this._title = title;
@@ -19,15 +19,15 @@ class Card {
     _setEventListeners() {
         this._element.querySelector('.card__like').addEventListener('click', () => {
             this._handleLike();
-        })
+        });
 
         this._element.querySelector('.card__delete').addEventListener('click', () => {
             this._deleteCard();
-        })
+        });
 
         this._element.querySelector('.card__image').addEventListener('click', () => {
             this._openCardPreview();
-        })
+        });
     }
 
     //Лайк карточки
@@ -42,6 +42,7 @@ class Card {
 
     //Открытие попапа с картинкой карточки
     _openCardPreview() {
+        const cardPreview = document.querySelector('.popup_card');
         const cardPreviewImage = cardPreview.querySelector('.popup__image');
         const cardPreviewText = cardPreview.querySelector('.popup__text');
 
@@ -52,7 +53,6 @@ class Card {
         cardPreviewText.textContent = this._name;
 
         cardPreview.querySelector('.popup__close_card').addEventListener('click', () => closePopup(cardPreview));
-
     }
 
 
@@ -68,10 +68,5 @@ class Card {
     }
 }
 
-//Перебор массива
-initialCards.forEach((item) => {
-    const card = new Card(item.link, item.name);
-
-    const cardElement = card.generateCard();
-    document.querySelector('.cards').prepend(cardElement);
-})
+import {openPopup} from './index.js';
+import {closePopup} from './index.js';
