@@ -124,9 +124,9 @@ profilePopupForm.addEventListener('submit', savePopupInfo);
 function savePopupCard (evt) {
     evt.preventDefault();
 
-    const savedCard = generateCard(popupPlaceInput.value, popupLinkInput.value);
-
-    addCard(savedCard);
+    const savedCard = new Card(popupLinkInput.value, popupPlaceInput.value);
+    const cardElement = savedCard.generateCard();
+    document.querySelector('.cards').prepend(cardElement);
 
     closePopup(placePopup);
 }
