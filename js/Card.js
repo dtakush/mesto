@@ -1,13 +1,18 @@
+import {openPopup} from './index.js';
+import {closePopup} from './index.js';
+
 export class Card {
-    constructor (link, title) {
+    constructor (link, title, cardTemplateSelector) {
         this._link = link;
         this._title = title;
+        this._cardTemplateSelector = cardTemplateSelector;
+        //console.log(this._cardTemplateSelector);
     }
 
     //Темплейт карточки
     _getTemplate() {
         const cardElement = document
-        .querySelector('#card-template')
+        .querySelector(this._cardTemplateSelector)
         .content
         .querySelector('.card')
         .cloneNode(true);
@@ -59,14 +64,17 @@ export class Card {
     //Создание карточки
     generateCard() {
         this._element = this._getTemplate();
+
+        //Вынесла оба элемента, так как cardTitle тоже возможно
+        //использовать несколько раз в дальнейшем
+        const cardImage = this._element.querySelector('.card__image');
+        const cardTitle = this._element.querySelector('.card__title');
+        
         this._setEventListeners();
-        this._element.querySelector('.card__image').style.backgroundImage = 'url(' + this._link + ')';
-        this._element.querySelector('.card__image').setAttribute('alt', `На фото ${this._title}`);
-        this._element.querySelector('.card__title').textContent = this._title;
+        cardImage.style.backgroundImage = 'url(' + this._link + ')';
+        cardImage.setAttribute('alt', `На фото ${this._title}`);
+        cardTitle.textContent = this._title;
 
         return this._element;
     }
 }
-
-import {openPopup} from './index.js';
-import {closePopup} from './index.js';
