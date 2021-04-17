@@ -1,35 +1,23 @@
-import {initialCards} from './initialCards.js';
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import {profileName,
+    profileAbout,
+    popupPlaceInput,
+    popupLinkInput,
+    popupNameInput,
+    popupAboutInput,
+    editProfileButton,
+    editPlaceButton,
+    placePopup,
+    profilePopup,
+    placePopupForm,
+    profilePopupForm,
+    placePopupCloseButton,
+    profilePopupCloseButton,
+    validationObj} from '../utils/constants.js';
 
-const editPlaceButton = document.querySelector('.profile__add-button');
-const placePopup = document.querySelector('.popup_place');
-const placePopupCloseButton = placePopup.querySelector('.popup__close-place');
-const placePopupForm = placePopup.querySelector('.popup__form_place');
-const popupPlaceInput = document.querySelector('.popup__input_place');
-const popupLinkInput = document.querySelector('.popup__input_link');
-
-const profilePopup = document.querySelector('.popup_profile');
-const profilePopupForm = profilePopup.querySelector('.popup__form_profile');
-const popupNameInput = document.querySelector('.popup__input_name');
-const popupAboutInput = document.querySelector('.popup__input_about');
-const profilePopupCloseButton = profilePopup.querySelector('.popup__close-profile');
-const editProfileButton = document.querySelector('.profile__edit-button');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
-
-const validationObj = {
-    inputSelector: '.popup__input',
-    errorSelector: '.popup__error',
-    inputInvalidClass: '.popup__input_invalid',
-    submitButtonSelector: '.popup__save-button',
-    submitButtonInvalidClass: '.popup__save-button_invalid',
-};
-
-const profileFormValidation = new FormValidator(validationObj, profilePopupForm);
-profileFormValidation.enableValidation();
-const placeFormValidation = new FormValidator(validationObj, placePopupForm);
-placeFormValidation.enableValidation();
+import {initialCards} from '../components/initialCards.js';
+import {Card} from '../components/Card.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {Section} from '../components/Section.js';
 
 
 
@@ -132,8 +120,18 @@ placePopupCloseButton.addEventListener('click', () => closePopup(placePopup));
 
 
 
-//Перебор массива для создания карточек
-initialCards.forEach((item) => {
-    const card = new Card(item.link, item.name, '.card-template');
-    generateCard(card);
-})
+//Отрисовка карточек на странице
+const cardList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+        const card = new Card(item.link, item.name, '.card-template');
+        const cardElement = card.generateCard();
+        cardList.addItem(cardElement);
+    }}, '.cards');
+cardList.renderItems();
+
+
+export const profileFormValidation = new FormValidator(validationObj, profilePopupForm);
+profileFormValidation.enableValidation();
+export const placeFormValidation = new FormValidator(validationObj, placePopupForm);
+placeFormValidation.enableValidation();

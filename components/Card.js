@@ -1,5 +1,5 @@
-import {openPopup} from './index.js';
-import {closePopup} from './index.js';
+import {openPopup} from '../pages/index.js';
+import {closePopup} from '../pages/index.js';
 
 export class Card {
     constructor (link, title, cardTemplateSelector) {
