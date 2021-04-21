@@ -16,6 +16,7 @@ import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {Section} from '../components/Section.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
+import {PopupWithImage} from '../components/PopupWithImage.js'
 import {UserInfo} from '../components/UserInfo.js';
 
 
@@ -23,7 +24,15 @@ import {UserInfo} from '../components/UserInfo.js';
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        const card = new Card(item, '.card-template');
+        const card = new Card({data: item,
+            handleCardClick: () => {
+                    const cardPreview = document.querySelector('.popup_card');
+
+                    const openCardPreview = new PopupWithImage(cardPreview);
+                    openCardPreview.open(item.link, item.name);
+            },
+            cardTemplateSelector: '.card-template'});
+
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
     }}, '.cards');
@@ -41,8 +50,15 @@ placeFormValidation.enableValidation();
 editPlaceButton.addEventListener('click', () => {
     placePopupForm.reset();
     const openPlacePopup = new PopupWithForm({popup: placePopup, 
-        handleFormSubmit: (items) => {
-            const savedCard = new Card(items, '.card-template');
+        handleFormSubmit: (item) => {
+            const savedCard = new Card({data: item,
+                handleCardClick: () => {
+                        const cardPreview = document.querySelector('.popup_card');
+    
+                        const openCardPreview = new PopupWithImage(cardPreview);
+                        openCardPreview.open(item.link, item.name);
+                },
+                cardTemplateSelector: '.card-template'});
             const cardElement = savedCard.generateCard();
             //console.log(items);
             const cardsList = document.querySelector('.cards');
