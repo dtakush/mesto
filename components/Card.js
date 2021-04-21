@@ -1,12 +1,10 @@
-import {openPopup} from '../pages/index.js';
-import {closePopup} from '../pages/index.js';
+import {PopupWithImage} from './PopupWithImage.js';
 
 export class Card {
-    constructor (link, title, cardTemplateSelector) {
-        this._link = link;
-        this._title = title;
+    constructor (data, cardTemplateSelector) {
+        this._link = data.link;
+        this._name = data.name;
         this._cardTemplateSelector = cardTemplateSelector;
-        //console.log(this._cardTemplateSelector);
     }
 
     //Темплейт карточки
@@ -48,16 +46,9 @@ export class Card {
     //Открытие попапа с картинкой карточки
     _openCardPreview() {
         const cardPreview = document.querySelector('.popup_card');
-        const cardPreviewImage = cardPreview.querySelector('.popup__image');
-        const cardPreviewText = cardPreview.querySelector('.popup__text');
 
-        openPopup(cardPreview);
-
-        cardPreviewImage.src = this._link;
-        cardPreviewImage.setAttribute('alt', `На увеличенном фото ${this._name}`);
-        cardPreviewText.textContent = this._name;
-
-        cardPreview.querySelector('.popup__close_card').addEventListener('click', () => closePopup(cardPreview));
+        const openCardPreview = new PopupWithImage(cardPreview);
+        openCardPreview.open(this._link, this._name);
     }
 
 
@@ -72,8 +63,8 @@ export class Card {
         
         this._setEventListeners();
         cardImage.style.backgroundImage = 'url(' + this._link + ')';
-        cardImage.setAttribute('alt', `На фото ${this._title}`);
-        cardTitle.textContent = this._title;
+        cardImage.setAttribute('alt', `На фото ${this._name}`);
+        cardTitle.textContent = this._name;
 
         return this._element;
     }
