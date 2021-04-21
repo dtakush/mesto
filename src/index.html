@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
   <title>Мои путешествия</title>
 </head>
 <body>
     <div class="page">
         <header class="header">
-            <img src="images/logo.svg" class="header__logo" alt="Логотип Mesto">
+            <img src="<%=require('./images/logo.svg')%>" class="header__logo" alt="Логотип Mesto">
         </header>
 
         <main class="content">
             <section class="profile">
                 <div class="profile__person">
-                    <img src="images/Avatar.png" class="profile__avatar" alt="Аватар">
+                    <img src="<%=require('./images/Avatar.png')%>" class="profile__avatar" alt="Аватар">
                     <div class="profile__info">
                         <div class="profile__edit-info">
                             <h1 class="profile__name" name="name">Жак-Ив Кусто</h1>
@@ -86,6 +85,5 @@
     </template>
     
     
-    <script type="module" src="pages/index.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 5px 0 30px;
+    margin: 0;
     cursor: pointer;
     transition: 1s ease-in-out;
 }
