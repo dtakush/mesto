@@ -1,5 +1,5 @@
 export class Card {
-    constructor ({data, cardTemplateSelector, handleCardClick}) {
+    constructor ({data, handleCardClick, cardTemplateSelector}) {
         this._link = data.link;
         this._name = data.name;
         this._cardTemplateSelector = cardTemplateSelector;
@@ -19,10 +19,6 @@ export class Card {
 
     //Слушатели событий
     _setEventListeners() {
-        this._element.querySelector('.card__like').addEventListener('click', () => {
-            this._handleLike();
-        });
-
         this._element.querySelector('.card__delete').addEventListener('click', () => {
             this._deleteCard();
         });
@@ -34,7 +30,9 @@ export class Card {
 
     //Лайк карточки
     _handleLike() {
-        this._element.querySelector('.card__like').classList.toggle('card__like_active');
+        this._element.querySelector('.card__like').addEventListener('click', () => {
+            this._element.querySelector('.card__like').classList.toggle('card__like_active');
+        });
     }
 
     //Удаление карточки
@@ -52,6 +50,7 @@ export class Card {
         const cardTitle = this._element.querySelector('.card__title');
         
         this._setEventListeners();
+        this._handleLike();
         
         cardImage.style.backgroundImage = 'url(' + this._link + ')';
         cardImage.setAttribute('alt', `На фото ${this._name}`);

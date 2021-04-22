@@ -1,11 +1,7 @@
-import {profilePopup} from '../utils/constants.js';
-import {profileFormValidation,
-        placeFormValidation
-        } from '../pages/index.js';
-
 export class Popup {
     constructor(popup) {
         this._popup = popup;
+        this._popupForm = this._popup.querySelector('.popup__form');
         this._handleEscClose = this._handleEscClose.bind(this);
         this._handleOlerlayClose = this._handleOlerlayClose.bind(this);
     }
@@ -13,15 +9,8 @@ export class Popup {
     //Открытие попапа
     open() {
         this._popup.classList.add('popup_opened');
-        this.setEventListeners();
         document.addEventListener('keydown', this._handleEscClose);
         this._popup.addEventListener('mousedown', this._handleOlerlayClose);
-        
-        if (this._popup == profilePopup) {
-            profileFormValidation.resetValidation();
-        } else {
-            placeFormValidation.resetValidation();
-        }
     }
 
     //Закрытие попапа

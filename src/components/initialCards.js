@@ -1,9 +1,9 @@
-import barcelona from '../images/barcelona.jpg';
-import georgia from '../images/georgia.jpg';
-import london from '../images/london.jpg';
-import nhatrang from '../images/nha-trang.jpg';
-import norway from '../images/norway.jpg';
-import rome from '../images/rome.jpg';
+import barcelona from '../utils/barcelona.jpg';
+import georgia from '../utils/georgia.jpg';
+import london from '../utils/london.jpg';
+import nhatrang from '../utils/nha-trang.jpg';
+import norway from '../utils/norway.jpg';
+import rome from '../utils/rome.jpg';
 
 export const initialCards = [
     {
