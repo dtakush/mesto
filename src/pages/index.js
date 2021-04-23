@@ -96,8 +96,7 @@ editPlaceButton.addEventListener('click', () => {
 
 //Открытие попапа с информацией пользователя
 editProfileButton.addEventListener('click', () => {
-    userInfo.getUserInfo(popupNameInput.value = profileName.textContent,
-                        popupAboutInput.value = profileAbout.textContent);
+    userInfo.getUserInfo(profilePopupForm);
     profileFormValidation.resetValidation();
     popupEditProfile.open();
 });

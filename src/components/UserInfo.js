@@ -4,11 +4,9 @@ export class UserInfo {
         this._about = userAbout;
     }
 
-    getUserInfo() {
-        return {
-            name: this._name.textContent,
-            about: this._about.textcontent,
-        }
+    getUserInfo(formItems) {
+        formItems.name.value = this._name.textContent;
+        formItems.about.value = this._about.textContent
     }
 
     setUserInfo(formItems) {
