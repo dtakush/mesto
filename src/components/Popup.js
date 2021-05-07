@@ -34,6 +34,16 @@ export class Popup {
         }
     }
 
+    //Изменение кнопки в процессе загрузки
+    loadingButton(isLoading) {
+        const submitButton = this._popup.querySelector('.popup__save-button');
+        if (isLoading) {
+            submitButton.textContent = "Сохранение...";
+        } else {
+            submitButton.textContent = "Сохранить";
+        }
+    }
+
     //Слушатели событий
     setEventListeners() {
         const closeButton = this._popup.querySelector('.popup__close');

@@ -14,7 +14,11 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__person">
-                    <img src="<%=require('./images/Avatar.png')%>" class="profile__avatar" alt="Аватар">
+                    <div class="profile__avatar">
+                        <div class="profile__avatar_edit">
+                            <img src="<%=require('./images/editAvatar.svg')%>" class="profile__avatar_edit-icon" alt="Иконка редактирования аватара">
+                        </div>
+                    </div>
                     <div class="profile__info">
                         <div class="profile__edit-info">
                             <h1 class="profile__name" name="name">Жак-Ив Кусто</h1>
@@ -64,7 +68,26 @@
                     </form>
                 </div>
             </section>
-
+            <section class="popup popup_delete">
+                <div class="popup__container">
+                    <button class="popup__close popup__close-place" type="button"></button>
+                    <h2 class="popup__title popup__title-delete">Вы уверены?</h2>
+                    <form class="popup__form popup__form-delete" name="card-popup" id="delete-popup" novalidate>
+                        <button class="popup__save-button popup__save-button_delete" id="delete-popup-button" type="submit">Да</button>
+                    </form>
+                </div>
+            </section>
+            <section class="popup popup_avatar">
+                <div class="popup__container">
+                    <button class="popup__close popup__close-place" type="button"></button>
+                    <h2 class="popup__title">Обновить аватар</h2>
+                    <form class="popup__form popup__form_avatar" name="avatar-popup" id="card-popup" novalidate>
+                        <input name="link" type="url" placeholder="Ссылка" class="popup__input popup__input_link" id="popup__input_link" required>
+                        <span class="popup__error popup__error_link" id="popup__input_link-error"></span>
+                        <button class="popup__save-button popup__save-button_avatar" id="card-popup-button" type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </section>
         </main>
         
         <footer class="footer">
@@ -79,7 +102,10 @@
             </button>
             <div class="card__info-block">
                 <h2 class="card__title"></h2>
-                <div class="card__like"></div>
+                <div class="card__like">
+                    <div class="card__like-image"></div>
+                    <p class="card__like-number"></p>
+                </div>
             </div>
         </article>
     </template>
