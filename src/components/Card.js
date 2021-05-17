@@ -66,6 +66,7 @@ export class Card {
     //Удаление карточки
     deleteCard() {
         this._element.remove();
+        this._element = null;
     }
 
     //Показать кнопку удаления карточки
@@ -83,7 +84,7 @@ export class Card {
         const cardImage = this._element.querySelector('.card__image');
         const cardTitle = this._element.querySelector('.card__title');
         const cardLikeNumber = this._element.querySelector('.card__like-number');
-;        
+       
         this._setEventListeners();
         this._handleLike();
         

@@ -29,7 +29,7 @@ export class Popup {
 
     //Закрытие попапап кликом на оверлей
     _handleOlerlayClose(evt) {
-        if (evt.target == evt.currentTarget) {
+        if (evt.target === evt.currentTarget) {
             this.close();
         }
     }
